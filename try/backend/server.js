@@ -19,7 +19,7 @@ app.get("/",(req,res)=>{
     res("api products is running ")
 })
 
-const PORT =3000
+const PORT =5000
 
 app.listen(PORT,()=>{
     console.log(`server is running in ${PORT}`)

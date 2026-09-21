@@ -1,33 +1,34 @@
 import axios from "axios";
 
-const API_URL = `${import.meta.env.VITE_API_URL}/api/products`;
+const API_URL = "http://localhost:5000/api/products";
 
-// GET ALL
+// GET ALL PRODUCTS
 export const getProducts = async () => {
   const response = await axios.get(API_URL);
-  return response.data.products;
+  return response.data;
 };
 
-// GET SINGLE
-export const getProductById = async (id) => {
-  const response = await axios.get(`${API_URL}/${id}`);
-  return response.data.product;
+// CREATE PRODUCT
+export const createProduct = async (product) => {
+  const response = await axios.post(API_URL, product);
+  return response.data;
 };
 
-// POST
-export const createProduct = async (productData) => {
-  const response = await axios.post(API_URL, productData);
-  return response.data.product;
+// UPDATE PRODUCT
+export const updateProduct = async (id, product) => {
+  const response = await axios.put(
+    `${API_URL}/${id}`,
+    product
+  );
+
+  return response.data;
 };
 
-// PUT
-export const updateProduct = async (id, productData) => {
-  const response = await axios.put(`${API_URL}/${id}`, productData);
-  return response.data.product;
-};
-
-// DELETE
+// DELETE PRODUCT
 export const deleteProduct = async (id) => {
-  const response = await axios.delete(`${API_URL}/${id}`);
+  const response = await axios.delete(
+    `${API_URL}/${id}`
+  );
+
   return response.data;
 };
